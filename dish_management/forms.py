@@ -9,12 +9,16 @@ class CreateDishForm(forms.ModelForm):
         fields = ["name", "price", "quantity", "image"]
 
         widgets = {
-            "name": forms.TextInput(attrs={"class": "input input-bordered w-full"}),
-            "price": forms.NumberInput(attrs={"class": "input input-bordered w-full"}),
+            "name": forms.TextInput(
+                attrs={"class": "input input-bordered w-full", "placeholder": "Nombre"}
+            ),
+            "price": forms.NumberInput(attrs={"class": "grow", "placeholder": "0"}),
             "quantity": forms.NumberInput(
                 attrs={"class": "input input-bordered w-full"}
             ),
             "image": forms.FileInput(
-                attrs={"class": "file-input file-input-bordered w-full"}
+                attrs={
+                    "class": "w-full h-full opacity-0 absolute inset-0 cursor-pointer"
+                }
             ),
         }

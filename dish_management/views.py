@@ -30,11 +30,12 @@ class DishUpdateView(UpdateView):
 class DishDetailView(DetailView):
     model = Dish
     template_name = "dish_management/detail.html"
+    context_object_name = "dish"
 
 
 class DishListView(ListView):
     model = Dish
-    paginate_by = 2
+    paginate_by = 10
     template_name = "dish_management/index.html"
     context_object_name = "dishes"
 
@@ -42,4 +43,4 @@ class DishListView(ListView):
 def delete_dish(request, pk):
     dish = get_object_or_404(Dish, pk=pk)
     dish.delete()
-    return redirect('success_url')
+    return redirect("dish-list")
