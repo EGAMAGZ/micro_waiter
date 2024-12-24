@@ -1,3 +1,66 @@
 {% extends "../base.html" %}
 
-{% block title%}Registrar Nuevo Platillos{% endblock %}
+{% block title%}Registrar Nuevo Platillo{% endblock %}
+
+{% block body %}
+
+    <div class="container mx-auto">
+        <h1 class="text-6xl font-semibold text-center my-6">Registrar Nuevo Platillo</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.name.label }}</span>
+                </div>
+
+               {{ form.name }} 
+
+               <div class="label">
+                        <span class="label-text text-red-500">{{ form.name.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.price.label }}</span>
+                </div>
+                
+                {{ form.price }}
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.price.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.quantity.label }}</span>
+                </div>
+
+                {{ form.quantity }}
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.quantity.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.image.label }}</span>
+                </div>
+
+                {{ form.image }}
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.image.errors }}</span>
+                </div>
+            </label>
+
+            <div class="flex justify-end mt-8 gap-2">
+                <a href="{% url 'dish-list' %}" class="btn btn-neutral">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

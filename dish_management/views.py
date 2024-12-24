@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import (
     CreateView,
     UpdateView,
@@ -5,16 +6,19 @@ from django.views.generic import (
     DeleteView,
     DetailView,
 )
-from django.shortcuts import redirect
 
+from django.urls import reverse_lazy
+
+from dish_management.forms import CreateDishForm
 from dish_management.models import Dish
 
 
 # Create your views here.
 class DishCreateView(CreateView):
     model = Dish
-    fields = ("name", "price", "quantity")
+    form_class = CreateDishForm
     template_name = "dish_management/create.html"
+    success_url = reverse_lazy("dish-list")
 
 
 class DishUpdateView(UpdateView):
@@ -35,6 +39,7 @@ class DishListView(ListView):
     context_object_name = "dishes"
 
 
-class DishDeleteView(DeleteView):
-    model = Dish
-    success_url = redirect("dish-list")
+def delete_dish(request, pk):
+    dish = get_object_or_404(Dish, pk=pk)
+    dish.delete()
+    return redirect('success_url')
