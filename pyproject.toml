@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "micro-waiter"
+version = "0.1.0"
+description = ""
+authors = ["EGAMAGZ <46827955+EGAMAGZ@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+django = "^5.1.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
