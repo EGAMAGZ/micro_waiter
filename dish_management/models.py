@@ -1,3 +1,4 @@
+from typing import Self
 from django.db import models
 from django.core import validators
 
@@ -21,11 +22,20 @@ class Dish(models.Model):
         default=0,
         verbose_name="Cantidad de Platillo",
     )
+    image = models.ImageField(upload_to="dishes_image", verbose_name="Imagen de Platillo")
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Creado",
+        editable=False,
     )
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name="Editado",
+        editable=False,
     )
+
+    class Meta:
+        ordering = ["created_at"]
+
+    def __str__(self: Self):
+        return self.name

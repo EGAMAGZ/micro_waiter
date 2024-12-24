@@ -1,0 +1,12 @@
+{% extends "../base.html" %}
+
+{% block title%}Platillos{% endblock %}
+
+{% block body %}
+    
+    {% for dish in dishes%}
+        {{dish}}
+    {% empty %}
+        <span>Vacio</span>
+    {% endfor %}
+{% endblock %}
