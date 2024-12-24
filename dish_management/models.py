@@ -22,7 +22,9 @@ class Dish(models.Model):
         default=0,
         verbose_name="Cantidad de Platillo",
     )
-    image = models.ImageField(upload_to="dishes_image", verbose_name="Imagen de Platillo")
+    image = models.ImageField(
+        upload_to="dishes_image", verbose_name="Imagen de Platillo"
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name="Creado",
