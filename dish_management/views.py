@@ -3,7 +3,6 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     ListView,
-    DeleteView,
     DetailView,
 )
 
@@ -35,7 +34,7 @@ class DishDetailView(DetailView):
 
 class DishListView(ListView):
     model = Dish
-    paginate_by = 10
+    paginate_by = 5
     template_name = "dish_management/index.html"
     context_object_name = "dishes"
 

@@ -1,37 +1,37 @@
 {% extends '../base.html' %}
 
 {% block title %}
-  {{ dish.name }}
+{{ dish.name }}
 {% endblock %}
 
 {% block body %}
-  <div class="container mx-auto">
-    <h1 class="text-6xl font-semibold text-center my-6">Consultar platillo</h1>
+<div class="container mx-auto">
+  <h1 class="text-6xl font-semibold text-center my-6">Consultar platillo</h1>
 
-    <div class="flex flex-col gap-4">
-      <div>
-        <span class="font-semibold">Nombre del platillo:</span>
-        <span>{{ dish.name }}</span>
-      </div>
-      <div>
-        <span class="font-semibold">Cantidad de platillos que se pueden preparar:</span>
-        <span>{{ dish.quantity }}</span>
-      </div>
-      <div>
-        <span class="font-semibold">Precio unitario del platillo:</span>
-        <span>${{ dish.price }}</span>
-      </div>
-      <div>
-        <span class="font-semibold">Imagen del platillo:</span>
-
-        <div class="mt-4 border border-dashed">
-          <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="w-full h-96 rounded" />
-        </div>
-      </div>
+  <div class="flex flex-col gap-4">
+    <div>
+      <span class="font-semibold">Nombre del platillo:</span>
+      <span>{{ dish.name }}</span>
     </div>
+    <div>
+      <span class="font-semibold">Cantidad de platillos que se pueden preparar:</span>
+      <span>{{ dish.quantity }}</span>
+    </div>
+    <div>
+      <span class="font-semibold">Precio unitario del platillo:</span>
+      <span>${{ dish.price }}</span>
+    </div>
+    <div>
+      <span class="font-semibold">Imagen del platillo:</span>
 
-    <div class="flex justify-end mt-4">
-      <a href="{% url 'dish-list' %}" class="btn btn-primary">Regresar</a>
+      <div class="mt-4 border border-1 border-dashed border-black w-full h-96 flex justify-center items-center">
+        <img src="{{ dish.image.url }}" alt="{{ dish.name }}" class="w-full h-96  object-center object-contain" />
+      </div>
     </div>
   </div>
+
+  <div class="flex justify-end mt-4">
+    <a href="{% url 'dish-list' %}" class="btn btn-primary">Regresar</a>
+  </div>
+</div>
 {% endblock %}
