@@ -17,11 +17,22 @@ Including another URLconf
 
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
+from django.urls import path
+
+from dish_management.views import (
+    DishListView,
+    DishCreateView,
+    DishUpdateView,
+    DishDetailView,
+    delete_dish,
+)
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path("dish/", include("dish_management.urls"))
+    path("", DishListView.as_view(), name="dish-list"),
+    path("create/", DishCreateView.as_view(), name="create-dish"),
+    path("<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
+    path("<int:pk>/update/", DishUpdateView.as_view(), name="update-dish"),
+    path("<int:pk>/delete/", delete_dish, name="delete-dish"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
