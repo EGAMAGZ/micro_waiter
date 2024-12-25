@@ -8,7 +8,7 @@ from django.views.generic import (
 
 from django.urls import reverse_lazy
 
-from dish_management.forms import CreateDishForm
+from dish_management.forms import CreateDishForm, UpdateDishForm
 from dish_management.models import Dish
 
 
@@ -22,8 +22,10 @@ class DishCreateView(CreateView):
 
 class DishUpdateView(UpdateView):
     model = Dish
-    fields = ("name", "price", "quantity")
+    form_class = UpdateDishForm
     template_name = "dish_management/update.html"
+    context_object_name = "dish"
+    success_url = reverse_lazy("dish-list")
 
 
 class DishDetailView(DetailView):

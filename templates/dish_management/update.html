@@ -1,0 +1,80 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}Modificar: {{dish.name}}{% endblock %}
+
+
+{% block body %}
+
+    <div class="container mx-auto">
+        <h1 class="text-6xl font-semibold text-center my-8">Modificar Platillo</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.name.label }}</span>
+                </div>
+
+               {{ form.name }} 
+
+               <div class="label">
+                        <span class="label-text text-red-500">{{ form.name.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.price.label }}</span>
+                </div>
+               
+                <div class="input input-bordered flex items-center gap-2">
+                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-currency-dollar"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg>
+                    {{ form.price }}
+                </div>
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.price.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.quantity.label }}</span>
+                </div>
+
+                {{ form.quantity }}
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.quantity.errors }}</span>
+                </div>
+            </label>
+
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text font-semibold">{{ form.image.label }}</span>
+                </div>
+
+                <div class="border border-1 border-dashed border-black w-full h-96 relative flex justify-center items-center">
+                    <svg id="upload-icon"  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="w-24 h-24 icon icon-tabler icons-tabler-outline icon-tabler-upload"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" /><path d="M7 9l5 -5l5 5" /><path d="M12 4l0 12" /></svg>
+                    <img id="image-preview" src="{{dish.image.url}}" class="w-full h-96 absolute object-center object-contain top-0 left-0" alt="Imagen del platillo">
+                    {{form.image}}
+                </div>
+
+                <div class="label">
+                    <span class="label-text text-red-500">{{ form.image.errors }}</span>
+                </div>
+            </label>
+
+
+            <div class="flex justify-end mt-8 gap-2">
+                <a href="{% url 'dish-list' %}" class="btn btn-neutral">Cancelar</a>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/preview.js' %}"></script>
+{% endblock %}
