@@ -40,13 +40,19 @@ class Dish(models.Model):
     )
     image = models.ImageField(
         upload_to="dishes_image/",
+        validators=[
+            validators.FileExtensionValidator(
+                ["jpg", "jpeg", "png"],
+                "Solo se permiten archivos de imagen",
+            ),
+        ],
         verbose_name="Imagen de Platillo",
         error_messages={
             "required": "Este campo es requerido",
             "invalid": "El archivo seleccionado no es una imagen",
             "missing": "No se ha seleccionado ningún archivo",
             "empty": "El archivo seleccionado está vacío",
-            "invalid_image": "El archivo seleccionado no es una imagen válida",
+            "invalid_extension": "Solo se admiten archivos de imagen con extensión .jpg, .jpeg o .png",
         },
     )
     created_at = models.DateTimeField(

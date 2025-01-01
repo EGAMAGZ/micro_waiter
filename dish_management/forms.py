@@ -41,7 +41,7 @@ class CreateDishForm(forms.ModelForm):
                 "invalid": "El archivo seleccionado no es una imagen",
                 "missing": "No se ha seleccionado ningún archivo",
                 "empty": "El archivo seleccionado está vacío",
-                "invalid_image": "El archivo seleccionado no es una imagen válida",
+                "invalid_extension": "Solo se admiten archivos de imagen con extensión .jpg, .jpeg o .png",
             },
         }
 
@@ -84,6 +84,6 @@ class UpdateDishForm(forms.ModelForm):
                 "invalid": "El archivo seleccionado no es una imagen",
                 "missing": "No se ha seleccionado ningún archivo",
                 "empty": "El archivo seleccionado está vacío",
-                "invalid_image": "El archivo seleccionado no es una imagen válida",
+                "invalid_extension": "Solo se admiten archivos de imagen con extensión .jpg, .jpeg o .png",
             },
         }
