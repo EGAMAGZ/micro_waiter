@@ -5,13 +5,25 @@ from django.core import validators
 
 # Create your models here.
 class Dish(models.Model):
-    name = models.CharField(max_length=30, verbose_name="Nombre de Platillo")
+    name = models.CharField(
+        max_length=30,
+        verbose_name="Nombre de Platillo",
+        error_messages={
+            "max_length": "El nombre no puede ser mayor a 30 caracteres",
+            "required": "Este campo es requerido",
+        },
+    )
     price = models.IntegerField(
         validators=[
             validators.MinValueValidator(0),
             validators.MaxValueValidator(1_000),
         ],
         verbose_name="Precio de Platillo",
+        error_messages={
+            "max_value": "El precio no puede ser mayor a 1,000",
+            "min_value": "El precio no puede ser menor a 0",
+            "required": "Este campo es requerido",
+        },
     )
     quantity = models.IntegerField(
         validators=[
@@ -21,9 +33,21 @@ class Dish(models.Model):
         blank=True,
         default=0,
         verbose_name="Cantidad de Platillo",
+        error_messages={
+            "max_value": "La cantidad no puede ser mayor a 1,000",
+            "min_value": "La cantidad no puede ser menor a 0",
+        },
     )
     image = models.ImageField(
-        upload_to="dishes_image/", verbose_name="Imagen de Platillo"
+        upload_to="dishes_image/",
+        verbose_name="Imagen de Platillo",
+        error_messages={
+            "required": "Este campo es requerido",
+            "invalid": "El archivo seleccionado no es una imagen",
+            "missing": "No se ha seleccionado ningún archivo",
+            "empty": "El archivo seleccionado está vacío",
+            "invalid_image": "El archivo seleccionado no es una imagen válida",
+        },
     )
     created_at = models.DateTimeField(
         auto_now_add=True,
