@@ -7,8 +7,41 @@
 {% block body %}
 
 <div class="container mx-auto">
-    <h1 class="text-xl font-bold">Menú</h1>
+    <h1 class="text-4xl font-bold text-center pb-12 pt-4">Menú</h1>
 
+    <div class="grid grid-cols-2 gap-4 h-full">
+
+        <a href="{% url 'dish-management' %}">
+            <div class="border rounded-lg border-black border-2 w-full flex flex-col justify-center items-center p-4 gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-tools-kitchen-2 w-24 h-24">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+                </svg>
+
+                <span class="font-bold text-xl btn btn-neutral no-animation">Gestionar platillos</span>
+            </div>
+        </a>
+
+        <a href="{% url 'order-management' %}">
+            <div class="border rounded-lg border-black border-2 w-full  flex flex-col justify-center items-center p-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-basket w-24 h-24">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 14a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                    <path
+                        d="M5.001 8h13.999a2 2 0 0 1 1.977 2.304l-1.255 7.152a3 3 0 0 1 -2.966 2.544h-9.512a3 3 0 0 1 -2.965 -2.544l-1.255 -7.152a2 2 0 0 1 1.977 -2.304z" />
+                    <path d="M17 10l-2 -6" />
+                    <path d="M7 10l2 -6" />
+                </svg>
+
+                <span class="font-bold text-xl btn btn-neutral no-animation">Realizar pedido</span>
+            </div>
+        </a>
+    </div>
 </div>
 
 {% endblock %}

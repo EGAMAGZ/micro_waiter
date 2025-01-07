@@ -23,6 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     path("", include("core.urls")),
     path("dish/", include("dish_management.urls")),
+    path("order/", include("order_management.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
