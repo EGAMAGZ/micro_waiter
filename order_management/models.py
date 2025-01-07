@@ -32,11 +32,9 @@ class Order(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        # Calcula el IVA (16% como ejemplo, puedes ajustar este valor)
         self.iva = int(self.sub_total * 0.16)
-        # Calcula el total sumando el subtotal y el IVA
         self.total = self.sub_total + self.iva
-        # Guarda el objeto
+
         super().save(*args, **kwargs)
 
 
@@ -61,7 +59,6 @@ class OrderDish(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        # Calcula los valores antes de guardar
         self.price_unit = self.dish.price
         self.total = self.quantity * self.price_unit
         self.iva = int(self.total * 0.16)

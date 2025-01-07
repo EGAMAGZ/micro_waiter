@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
@@ -9,3 +8,6 @@ class NotFoundView(TemplateView):
 
 class ServerErrorView(TemplateView):
     template_name = "500.html"
+
+class HomeView(TemplateView):
+    template_name = "core/index.html"
