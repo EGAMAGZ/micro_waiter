@@ -6,7 +6,7 @@ from dish_management.models import Dish
 class CreateDishForm(forms.ModelForm):
     class Meta:
         model = Dish
-        fields = ["name", "price", "quantity", "image"]
+        fields = ["name", "price", "quantity"]
 
         widgets = {
             "name": forms.TextInput(
@@ -15,11 +15,6 @@ class CreateDishForm(forms.ModelForm):
             "price": forms.NumberInput(attrs={"class": "grow", "placeholder": "0"}),
             "quantity": forms.NumberInput(
                 attrs={"class": "input input-bordered w-full"}
-            ),
-            "image": forms.FileInput(
-                attrs={
-                    "class": "w-full h-full opacity-0 absolute inset-0 cursor-pointer"
-                }
             ),
         }
         error_messages = {
@@ -35,13 +30,6 @@ class CreateDishForm(forms.ModelForm):
             "quantity": {
                 "max_value": "La cantidad no puede ser mayor a 1,000",
                 "min_value": "La cantidad no puede ser menor a 0",
-            },
-            "image": {
-                "required": "Este campo es requerido",
-                "invalid": "El archivo seleccionado no es una imagen",
-                "missing": "No se ha seleccionado ningún archivo",
-                "empty": "El archivo seleccionado está vacío",
-                "invalid_extension": "Solo se admiten archivos de imagen con extensión .jpg, .jpeg o .png",
             },
         }
 
@@ -49,7 +37,7 @@ class CreateDishForm(forms.ModelForm):
 class UpdateDishForm(forms.ModelForm):
     class Meta:
         model = Dish
-        fields = ["name", "price", "quantity", "image"]
+        fields = ["name", "price", "quantity"]
 
         widgets = {
             "name": forms.TextInput(
@@ -58,11 +46,6 @@ class UpdateDishForm(forms.ModelForm):
             "price": forms.NumberInput(attrs={"class": "grow", "placeholder": "0"}),
             "quantity": forms.NumberInput(
                 attrs={"class": "input input-bordered w-full"}
-            ),
-            "image": forms.FileInput(
-                attrs={
-                    "class": "w-full h-full opacity-0 absolute inset-0 cursor-pointer"
-                }
             ),
         }
         error_messages = {
@@ -78,12 +61,5 @@ class UpdateDishForm(forms.ModelForm):
             "quantity": {
                 "max_value": "La cantidad no puede ser mayor a 1,000",
                 "min_value": "La cantidad no puede ser menor a 0",
-            },
-            "image": {
-                "required": "Este campo es requerido",
-                "invalid": "El archivo seleccionado no es una imagen",
-                "missing": "No se ha seleccionado ningún archivo",
-                "empty": "El archivo seleccionado está vacío",
-                "invalid_extension": "Solo se admiten archivos de imagen con extensión .jpg, .jpeg o .png",
             },
         }
